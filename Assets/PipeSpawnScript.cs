@@ -17,13 +17,14 @@ public class PipeSpawnScript : MonoBehaviour
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-        spawnPipe();
         actualSpawnRate = spawnRate;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!logic.gameStarted) return;
+
         if (actualSpawnRate > lowestSpawnRate)
         {
             actualSpawnRate = spawnRate - logic.GetScore() / 40;

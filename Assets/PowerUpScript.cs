@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUpHeavyScript : PipeMoveScript
+public class PowerUp : PipeMoveScript
 {
-    public PowerUpManagerScript powerUpManager;
-    // Update is called once per frame
+    public PowerUpType powerUpType;
+
+    public PowerUpManagerScript powerUpManagerScript;
 
     public override void Start()
     {
-        powerUpManager = GameObject.FindGameObjectWithTag("powerUpManager").GetComponent<PowerUpManagerScript>();
+        powerUpManagerScript = FindObjectOfType<PowerUpManagerScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
@@ -24,13 +23,19 @@ public class PowerUpHeavyScript : PipeMoveScript
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "Bird")
+        if (collision.CompareTag("Bird"))
         {
-            powerUpManager.ApplyPowerUpHeavy();
+            powerUpManagerScript.ApplyPowerUp(powerUpType);
             Destroy(gameObject);
         }
-
     }
+}
+
+public enum PowerUpType
+{
+    Heavy,
+    Invicibility
 }

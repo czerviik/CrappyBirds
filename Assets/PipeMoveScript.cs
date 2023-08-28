@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PipeMoveScript : MonoBehaviour
 {
-    public float moveSpeed = 5;
+    public float moveSpeed = 10;
     public float deadZone = -25;
     protected float actualSpeed;
     public LogicScript logic;

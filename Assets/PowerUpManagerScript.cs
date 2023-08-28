@@ -10,33 +10,35 @@ public class PowerUpManagerScript : MonoBehaviour
     public float powerUpHeavyStrength = 5;
     public float powerUpInvicTime = 5;
 
-
     void Start()
     {
         birdScript = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdScript3>();
     }
 
-    public void ApplyPowerUpHeavy()
+    public void ApplyPowerUp(PowerUpType powerUpType)
     {
-        StartCoroutine(PowerUpH(powerUpHeavyTime,powerUpHeavyStrength));
+        switch(powerUpType)
+        {
+            case PowerUpType.Heavy:
+                StartCoroutine(AdjustFlapStrength(-powerUpHeavyStrength, powerUpHeavyTime));
+                break;
+            case PowerUpType.Invicibility:
+                StartCoroutine(SetInvincibility(Bird, powerUpInvicTime));
+                break;
+        }
     }
 
-    IEnumerator PowerUpH(float waitTime,float powerUpHeavyStrength)
+    IEnumerator AdjustFlapStrength(float amount, float duration)
     {
-        birdScript.flapStrength -= powerUpHeavyStrength;
-        yield return new WaitForSeconds(waitTime);
-        birdScript.flapStrength += powerUpHeavyStrength;
+        birdScript.flapStrength += amount;
+        yield return new WaitForSeconds(duration);
+        birdScript.flapStrength -= amount;
     }
 
-    public void ApplyPowerUpInvicibility()
-    {
-        StartCoroutine(PowerUpI(Bird, powerUpInvicTime));
-    }
-
-    IEnumerator PowerUpI(GameObject bird, float waitTime)
+    IEnumerator SetInvincibility(GameObject bird, float duration)
     {
         bird.GetComponent<CapsuleCollider2D>().enabled = false;
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(duration);
         bird.GetComponent<CapsuleCollider2D>().enabled = true;
     }
 }

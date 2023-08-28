@@ -28,11 +28,17 @@ public class BirdScript3 : MonoBehaviour
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
         shake = GameObject.FindGameObjectWithTag("CameraShake").GetComponent<ShakeScript>();
         logic.showHighScore();
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        animator.SetBool("swing", false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!logic.gameStarted) return;
+
+        GetComponent<Rigidbody2D>().isKinematic = false;
         animator.SetBool("swing", false);
 
         //wing swing
@@ -42,7 +48,7 @@ public class BirdScript3 : MonoBehaviour
             myRigidbody2D.velocity = Vector2.up * flapStrength;
 
         }
-        //make shit
+        //make a shit
         if (Input.GetKeyDown(KeyCode.S) && birdIsAlive)
         {
             StartCoroutine(SpawnShit());
@@ -50,7 +56,7 @@ public class BirdScript3 : MonoBehaviour
             Debug.Log("Shit triggered");
         }
 
-        //automatická rotace
+        //automatic rotation of the bird
         float angle = Mathf.Atan2(myRigidbody2D.velocity.y,angleModifier) * Mathf.Rad2Deg;
         angle = Mathf.Clamp(angle, -maximumAngle, maximumAngle);
 
@@ -70,7 +76,7 @@ public class BirdScript3 : MonoBehaviour
         }
 
     }
-
+    // bird collides with a pipe
     private void OnCollisionEnter2D(Collision2D collision)
     {
         featherBurst.SetActive(true);
@@ -83,6 +89,7 @@ public class BirdScript3 : MonoBehaviour
         animator.SetTrigger("death");
     }
 
+    //bird leaves the screen
     private void OutOfScreenCheck()
     {
         if (transform.position.y > maxHeight || transform.position.y < minHeight)
@@ -98,6 +105,7 @@ public class BirdScript3 : MonoBehaviour
         Instantiate(featherBurst, transform.position, Quaternion.identity);
     }
 
+    //droping a shit mechanic
     private IEnumerator SpawnShit()
     {
         // Wait for a specific amount of time (e.g., 0.5 seconds)

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1166272029995319826}
   - component: {fileID: 3679444914069866011}
   - component: {fileID: 5401358217505995056}
-  - component: {fileID: 4195690749790305726}
+  - component: {fileID: 5725259651840954120}
   m_Layer: 0
   m_Name: PowerUpHeavyPrefab
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 56579bed358be4088b5ba018d6515aa9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b66a8aeb4337471c936cee70321b6d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.89
---- !u!114 &4195690749790305726
+--- !u!114 &5725259651840954120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,10 +130,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8823761694435719455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd0d9685dc294795afb87a3827d1b02, type: 3}
+  m_Script: {fileID: 11500000, guid: 7839fea94c2454c2a97651a41986ccfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  deadZone: -25
-  logic: {fileID: 0}
-  powerUpManager: {fileID: 0}
