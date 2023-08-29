@@ -3,7 +3,7 @@ using UnityEngine;
 public class PowerUp : PipeMoveScript
 {
     public PowerUpType powerUpType;
-
+    public GameObject timerManagerPrefab;
     public PowerUpManagerScript powerUpManagerScript;
 
     public override void Start()
@@ -15,11 +15,10 @@ public class PowerUp : PipeMoveScript
     public override void Update()
     {
         actualSpeed = moveSpeed + logic.GetScore() / 10;
-        //Debug.Log(actualSpeed);
         transform.position += Vector3.left * actualSpeed * Time.deltaTime;
         if (transform.position.x < deadZone)
         {
-            Debug.Log("Bim ho. PowerUp destroyed");
+            Debug.Log("PowerUp destroyed");
             Destroy(gameObject);
         }
     }
@@ -28,7 +27,21 @@ public class PowerUp : PipeMoveScript
     {
         if (collision.CompareTag("Bird"))
         {
-            powerUpManagerScript.ApplyPowerUp(powerUpType);
+            // Apply powerUp
+            if (powerUpManagerScript != null)
+            {
+                powerUpManagerScript.ApplyPowerUp(powerUpType);
+            }
+
+            // Get canvas transform reference
+            Transform canvasTransform = GameObject.FindGameObjectWithTag("Canvas").transform;
+
+            // Instantiate the prefab and set its parent to the canvas
+            GameObject newPowerUpBar = Instantiate(timerManagerPrefab);
+            newPowerUpBar.transform.SetParent(canvasTransform, false);
+            newPowerUpBar.transform.localPosition = Vector3.zero;
+            newPowerUpBar.transform.localScale = Vector3.one;
+
             Destroy(gameObject);
         }
     }

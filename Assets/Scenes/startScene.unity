@@ -6631,8 +6631,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52321b55a4bcc4913b149e6f2cf77672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStarted: 0
   playerScore: 0
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 3177014}
+  gameHelp: {fileID: 0}
   gameOverScreen: {fileID: 0}
   highScore: 0
   highScoreText: {fileID: 262085883}
