@@ -40,7 +40,7 @@ public class PipeSpawnScript : MonoBehaviour
 
     }
 
-    void spawnPipe()
+    public void spawnPipe()
     {
         float lowestPoint = transform.position.y - heightOffset;
         float highestPoint = transform.position.y + heightOffset;

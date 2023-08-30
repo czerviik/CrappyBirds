@@ -5,6 +5,7 @@ public class PowerUp : PipeMoveScript
     public PowerUpType powerUpType;
     public PowerUpManagerScript powerUpManagerScript;
     public TimerBarLogicScript timerBarSpawn;
+    public GameObject pipeCollision;
 
     public override void Start()
     {
@@ -25,7 +26,7 @@ public class PowerUp : PipeMoveScript
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
         if (collision.CompareTag("Bird"))
         {
             // Apply powerUp
@@ -35,6 +36,12 @@ public class PowerUp : PipeMoveScript
             }
             timerBarSpawn.TimerBarSpawn(powerUpType);
             Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Pipe Part"))
+        {
+            Destroy(gameObject);
+            powerUpManagerScript.ApplyPowerUp(powerUpType);
         }
     }
 }

@@ -12,8 +12,8 @@ public class PowerUpSpawnerScript : MonoBehaviour
     public float rarityInv = 25;
     public float heightOffset = 10;
 
-    private readonly float randomSpawnHeavyMin = 5;
-    private readonly float randomSpawnInvMin = 15;
+    private readonly float randomSpawnHeavyMin = 10;
+    private readonly float randomSpawnInvMin = 25;
     private float actualSpawnRateHeavy;
     private float actualSpawnRateInv;
     private float timerHeavy = 0;

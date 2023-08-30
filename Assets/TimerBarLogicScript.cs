@@ -8,53 +8,47 @@ public class TimerBarLogicScript : MonoBehaviour
     public GameObject timerManagerPrefabInv;
     public GameObject[] timerBarsPresent;
     public float nextBarOffset = 2;
-
+    private bool barOnLvl2 = false;
 
     public void TimerBarSpawn(PowerUpType powerUpType)
     {
         timerBarsPresent = GameObject.FindGameObjectsWithTag("TimerBar");
 
-        switch (powerUpType)
+        // Determine which prefab to instantiate.
+        GameObject prefabToSpawn = (powerUpType == PowerUpType.Heavy) ? timerManagerPrefabHeavy : timerManagerPrefabInv;
+
+        GameObject newPowerUpBar = Instantiate(prefabToSpawn);
+
+        //add to canvas "layer"
+        Transform canvasTransform = GameObject.FindGameObjectWithTag("Canvas").transform;
+        newPowerUpBar.transform.SetParent(canvasTransform, false);
+
+        //handling multiple timerbars
+        if (timerBarsPresent.Length == 0)
         {
-            case PowerUpType.Heavy:
-                // Get canvas transform reference
-                Transform canvasTransform = GameObject.FindGameObjectWithTag("Canvas").transform;
-
-                // Instantiate the prefab and set its parent to the canvas
-                GameObject newPowerUpBarHeavy = Instantiate(timerManagerPrefabHeavy);
-                newPowerUpBarHeavy.transform.SetParent(canvasTransform, false);
-
-                if (timerBarsPresent.Length < 1)
-                {
-                    newPowerUpBarHeavy.transform.localPosition = Vector3.zero;
-
-                }
-                else
-                {
-                    newPowerUpBarHeavy.transform.localPosition = new Vector3(0, - nextBarOffset, 0);
-                }
-                newPowerUpBarHeavy.transform.localScale = Vector3.one;
-                break;
-
-            case PowerUpType.Invicibility:
-
-                canvasTransform = GameObject.FindGameObjectWithTag("Canvas").transform;
-
-
-                GameObject newPowerUpBarInv = Instantiate(timerManagerPrefabInv);
-                newPowerUpBarInv.transform.SetParent(canvasTransform, false);
-
-                if (timerBarsPresent.Length < 1)
-                {
-                    newPowerUpBarInv.transform.localPosition = Vector3.zero;
-                }
-                else
-                {
-                    newPowerUpBarInv.transform.localPosition = new Vector3(0,- nextBarOffset, 0);
-                }
-                newPowerUpBarInv.transform.localScale = Vector3.one;
-                break;
+            newPowerUpBar.transform.localPosition = Vector3.zero;
+            barOnLvl2 = false;
         }
-  
+        else if (timerBarsPresent.Length == 1)
+        {
+            if (!barOnLvl2)
+            {
+                newPowerUpBar.transform.localPosition = new Vector3(0, -nextBarOffset, 0);
+                barOnLvl2 = true;
+            }
+            else
+            {
+                newPowerUpBar.transform.localPosition = Vector3.zero;
+                barOnLvl2 = false;
+            }
+
+        }
+        else if (timerBarsPresent.Length == 2)
+        {
+            newPowerUpBar.transform.localPosition = new Vector3(0, nextBarOffset, 0);
+        }
+
+        newPowerUpBar.transform.localScale = Vector3.one;
+
     }
 }

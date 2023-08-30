@@ -29,23 +29,26 @@ public class BirdScript3 : MonoBehaviour
         shake = GameObject.FindGameObjectWithTag("CameraShake").GetComponent<ShakeScript>();
         logic.showHighScore();
         GetComponent<Rigidbody2D>().isKinematic = true;
-        animator.SetBool("swing", false);
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (!logic.gameStarted) return;
 
         GetComponent<Rigidbody2D>().isKinematic = false;
-        animator.SetBool("swing", false);
+        
 
         //wing swing
         if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
         {
-            animator.SetBool("swing",true);
+            animator.SetTrigger("swing");
             myRigidbody2D.velocity = Vector2.up * flapStrength;
+            
 
         }
         //make a shit

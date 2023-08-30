@@ -15,6 +15,7 @@ TagManager:
   - TimerBar
   - TimerBarScript
   - Pipe Part
+  - Pipe Spawn
   layers:
   - Default
   - TransparentFX

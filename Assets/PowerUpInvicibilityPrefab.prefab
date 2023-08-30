@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7839fea94c2454c2a97651a41986ccfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 5
   deadZone: -25
   logic: {fileID: 0}
   powerUpType: 1
-  timerManagerPrefab: {fileID: 3375092902138133525, guid: c231184ea009e49558f6ed984f1cd855, type: 3}
   powerUpManagerScript: {fileID: 0}
+  timerBarSpawn: {fileID: 0}

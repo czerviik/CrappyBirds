@@ -5418,7 +5418,6 @@ MonoBehaviour:
   gameHelp: {fileID: 1521636688}
   gameStarted: 0
   logic: {fileID: 0}
-  pipeSpawner: {fileID: 0}
 --- !u!1 &458796622
 GameObject:
   m_ObjectHideFlags: 0
@@ -5451,7 +5450,7 @@ MonoBehaviour:
   timerManagerPrefabHeavy: {fileID: 3375092902138133525, guid: 170dfbf72e94c467eb441afa13345f70, type: 3}
   timerManagerPrefabInv: {fileID: 3375092902138133525, guid: c231184ea009e49558f6ed984f1cd855, type: 3}
   timerBarsPresent: []
-  nextBarOffset: 110
+  nextBarOffset: 120
 --- !u!4 &458796624
 Transform:
   m_ObjectHideFlags: 0
@@ -5586,7 +5585,7 @@ GameObject:
   - component: {fileID: 512899645}
   m_Layer: 0
   m_Name: Pipe Spawner
-  m_TagString: Pipe Spawn
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5604,9 +5603,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipe: {fileID: 1990009081049918936, guid: b2943d7bd9b8846e6a229403217fd0aa, type: 3}
-  spawnRate: 4.9
+  spawnRate: 6.7
   lowestSpawnRate: 1.2
-  heightOffset: 7.43
+  heightOffset: 8
   logic: {fileID: 0}
 --- !u!4 &512899646
 Transform:
@@ -5774,9 +5773,9 @@ MonoBehaviour:
   powerUpHeavy: {fileID: 8823761694435719455, guid: 574e89a42a29748f0813594a0fb908ab, type: 3}
   powerUpInv: {fileID: 8823761694435719455, guid: 00496fafd8d1e4a4d88cd90b8f0e4d16, type: 3}
   logic: {fileID: 0}
-  rarityHeavy: 40.3
-  rarityInv: 42.7
-  heightOffset: 8.12
+  rarityHeavy: 12.4
+  rarityInv: 13.3
+  heightOffset: 8.21
 --- !u!4 &702906210
 Transform:
   m_ObjectHideFlags: 0
@@ -5947,9 +5946,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   birdScript: {fileID: 0}
   Bird: {fileID: 1769573623}
-  powerUpHeavyTime: 5
+  powerUpHeavyTime: 6.04
   powerUpHeavyStrength: 5
-  powerUpInvicTime: 7.41
+  powerUpInvicTime: 8
 --- !u!4 &1240547767
 Transform:
   m_ObjectHideFlags: 0
@@ -6583,7 +6582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody2D: {fileID: 1769573626}
-  flapStrength: 14
+  flapStrength: 14.3
   logic: {fileID: 0}
   birdIsAlive: 1
   maxHeight: 11.5
