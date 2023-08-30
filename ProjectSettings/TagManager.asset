@@ -12,6 +12,9 @@ TagManager:
   - powerUpManager
   - TimerManager
   - Canvas
+  - TimerBar
+  - TimerBarScript
+  - Pipe Part
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - Water
   - UI
   - Transition
-  - 
+  - pipeLayer
   - 
   - 
   - 

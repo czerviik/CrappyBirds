@@ -10,35 +10,21 @@ public class LogicScript : MonoBehaviour
     public bool gameStarted = false;
     public float playerScore = 0;
     public Text scoreText;
-    public TextMeshProUGUI gameHelp;
     public GameObject gameOverScreen;
+    public GameObject[] timerBars;
     public float highScore;
     public Text highScoreText;
     private bool isGameOver;
 
-    private void Start()
-    {
-        gameHelp.text = "<color=#dede16>mezerníkem</color> zamávej křídly!";
-        Debug.Log("Setting gameHelp text...");
-
-    }
-
-    void Update()
-    {
-        if (!gameStarted && Input.GetKeyDown(KeyCode.Space))
-        {
-            gameStarted = true;
-
-            if (gameHelp != null)
-            {
-                Destroy(gameHelp.gameObject);
-            }
-        }
-        
-    }
+    
 
     [ContextMenu("Increase Score")]
     
+    public void StartGame()
+    {
+        gameStarted = true;
+    }
+
     public void addScore(int scoreToAdd)
     {
         if(isGameOver == false)
@@ -77,6 +63,14 @@ public class LogicScript : MonoBehaviour
 
     public void GameOver()
     {
+        timerBars = GameObject.FindGameObjectsWithTag("TimerBar");
+
+        foreach(GameObject timerBar in timerBars)
+        {
+            TimerBar timerBarComponent = timerBar.GetComponent<TimerBar>();
+            timerBarComponent.DeactivateTimer();
+        }
+        
         gameOverScreen.SetActive(true);
         isGameOver = true;
     }

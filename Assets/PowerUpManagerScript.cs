@@ -37,8 +37,12 @@ public class PowerUpManagerScript : MonoBehaviour
 
     IEnumerator SetInvincibility(GameObject bird, float duration)
     {
-        bird.GetComponent<CapsuleCollider2D>().enabled = false;
+        //binary magic to actually get a binary layer mask to use it to exclude a layer, don't ask why
+        int layerNumber = LayerMask.NameToLayer("pipeLayer");
+        int layerMask = 1 << layerNumber;
+
+        bird.GetComponent<CapsuleCollider2D>().excludeLayers = layerMask;
         yield return new WaitForSeconds(duration);
-        bird.GetComponent<CapsuleCollider2D>().enabled = true;
+        bird.GetComponent<CapsuleCollider2D>().excludeLayers = 0;
     }
 }

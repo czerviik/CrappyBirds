@@ -137,5 +137,5 @@ MonoBehaviour:
   deadZone: -25
   logic: {fileID: 0}
   powerUpType: 1
-  timerManagerPrefab: {fileID: 3375092902138133525, guid: 170dfbf72e94c467eb441afa13345f70, type: 3}
+  timerManagerPrefab: {fileID: 3375092902138133525, guid: c231184ea009e49558f6ed984f1cd855, type: 3}
   powerUpManagerScript: {fileID: 0}

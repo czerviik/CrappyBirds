@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2327966715508219590}
   - component: {fileID: 8005331132903282168}
   - component: {fileID: 6383929653141997002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CloseCallTriggerTop
-  m_TagString: Untagged
+  m_TagString: Pipe Part
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,9 +154,9 @@ GameObject:
   - component: {fileID: 6411474757982659521}
   - component: {fileID: 1993506857101867063}
   - component: {fileID: 2575486742819616401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bottom Pipe
-  m_TagString: Untagged
+  m_TagString: Pipe Part
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,9 +284,9 @@ GameObject:
   - component: {fileID: 6190707385424114566}
   - component: {fileID: 7837328706981859997}
   - component: {fileID: 4913088268056562687}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top Pipe
-  m_TagString: Untagged
+  m_TagString: Pipe Part
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,9 +414,9 @@ GameObject:
   - component: {fileID: 7444202117410365925}
   - component: {fileID: 7320935708237014317}
   - component: {fileID: 3089192710395966687}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CloseCallTriggerBot
-  m_TagString: Untagged
+  m_TagString: Pipe Part
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

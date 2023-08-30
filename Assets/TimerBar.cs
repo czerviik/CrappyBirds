@@ -12,10 +12,11 @@ public class TimerBar : MonoBehaviour
     public PowerUpManagerScript powerUpManagerScript;
     private float timeRemaining;
     public PowerUpType powerUpType;
-    private bool timerIsActive = false;
+    public bool timerIsActive;
 
     void Start()
     {
+        timerIsActive = false;
         powerUpManagerScript = FindObjectOfType<PowerUpManagerScript>();
         StartTimeBar(powerUpType);
     }
@@ -38,12 +39,10 @@ public class TimerBar : MonoBehaviour
         switch (powerUpType)
         {
             case PowerUpType.Heavy:
-                powerUpTextHeavy.SetActive(true);
                 maxTime = powerUpManagerScript.powerUpHeavyTime;
                 Debug.Log("TimerBar Heavy Started!");
                 break;
             case PowerUpType.Invicibility:
-                powerUpTextInv.SetActive(true);
                 maxTime = powerUpManagerScript.powerUpInvicTime;
                 Debug.Log("TimerBar Invicibility Started!");
                 break;
@@ -53,9 +52,10 @@ public class TimerBar : MonoBehaviour
         timeRemaining = maxTime;
     }
 
-    private void DeactivateTimer()
+    public void DeactivateTimer()
     {
         timerIsActive = false;
+
         Destroy(gameObject);  // Destroy the TimerBar instance
     }
 }

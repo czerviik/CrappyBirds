@@ -79,6 +79,7 @@ public class BirdScript3 : MonoBehaviour
     // bird collides with a pipe
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         featherBurst.SetActive(true);
         FeatherBurst();
         featherBurst.SetActive(false);

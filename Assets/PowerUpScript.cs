@@ -3,12 +3,13 @@ using UnityEngine;
 public class PowerUp : PipeMoveScript
 {
     public PowerUpType powerUpType;
-    public GameObject timerManagerPrefab;
     public PowerUpManagerScript powerUpManagerScript;
+    public TimerBarLogicScript timerBarSpawn;
 
     public override void Start()
     {
         powerUpManagerScript = FindObjectOfType<PowerUpManagerScript>();
+        timerBarSpawn = GameObject.FindGameObjectWithTag("TimerBarScript").GetComponent<TimerBarLogicScript>();
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
@@ -32,16 +33,7 @@ public class PowerUp : PipeMoveScript
             {
                 powerUpManagerScript.ApplyPowerUp(powerUpType);
             }
-
-            // Get canvas transform reference
-            Transform canvasTransform = GameObject.FindGameObjectWithTag("Canvas").transform;
-
-            // Instantiate the prefab and set its parent to the canvas
-            GameObject newPowerUpBar = Instantiate(timerManagerPrefab);
-            newPowerUpBar.transform.SetParent(canvasTransform, false);
-            newPowerUpBar.transform.localPosition = Vector3.zero;
-            newPowerUpBar.transform.localScale = Vector3.one;
-
+            timerBarSpawn.TimerBarSpawn(powerUpType);
             Destroy(gameObject);
         }
     }
